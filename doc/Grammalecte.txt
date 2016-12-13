@@ -2,7 +2,7 @@
 *Grammalecte*
 
 Author:      Dominique Pellé <dominique.pelle@gmail.com>
-Last Change: 20 Sep 2016
+Last Change: 13 Dec 2016
 
 For Vim version 8.0 and above
 
@@ -33,7 +33,7 @@ See http://grammalecte.org/grammalecte for more details about Grammalecte.
 If you don't have time to read help files, this screenshot will give you
 an idea of what the Grammalecte plugin does:
 
-  http://dominique.pelle.free.fr/pic/GrammalecteVimPlugin_en.png
+  http://dominique.pelle.free.fr/pic/GrammalecteVimPlugin.png
 
 ============================================================================
 
@@ -41,7 +41,7 @@ an idea of what the Grammalecte plugin does:
 
 You can download the latest version of this plugin from:
 
-  http://www.vim.org/scripts/script.php?script_id=???
+  http://www.vim.org/scripts/script.php?script_id=5497
 
 Or on github:
 
@@ -106,7 +106,7 @@ g:grammalecte_cli_py                                  *g:grammalecte_cli_py*
 
   Example: >
 
-  :let g:grammalect_cli_pi='$HOME/Grammalecte-v0.5.9/pythonpath/cli.py'
+  :let g:grammalect_cli_py='$HOME/Grammalecte-fr-v0.5.14/pythonpath/cli.py'
 
 g:gammalecte_disable_rules                     *g:grammalecte_disable_rules*
 
