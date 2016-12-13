@@ -49,7 +49,7 @@ Or on github:
 
 Grammalecte can be downloaded at:
 
-  http://www.dicollecte.org/grammalecte/telecharger.php
+  http://grammalecte.net/telecharger.php
 
 This vim plugin requires Grammalecte version 0.5.12 or newer.
 

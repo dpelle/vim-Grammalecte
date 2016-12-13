@@ -3,7 +3,7 @@
 Vim-Grammalecte is a plugin that integrates Grammalecte into Vim.
 Grammalecte is an Open Source grammar checker for French.
 
-See http://grammalecte.org/grammalecte for more details about Grammalecte.
+See http://grammalecte.net for more details about Grammalecte.
 
 ## Screenshot ###
 
