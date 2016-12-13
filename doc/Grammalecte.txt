@@ -1,0 +1,227 @@
+*Grammalecte.txt*  A French grammar checker in Vim.
+*Grammalecte*
+
+Author:      Dominique Pellé <dominique.pelle@gmail.com>
+Last Change: 20 Sep 2016
+
+For Vim version 8.0 and above
+
+============================================================================
+
+1.  Overview                                      |grammalecte-overview|
+2.  Screenshot                                    |grammalecte-screenshot|
+3.  Download                                      |grammalecte-download|
+4.  Installation                                  |grammalecte-installation|
+5.  Configuration                                 |grammalecte-configuration|
+6.  Features                                      |grammalecte-features|
+7.  Bugs                                          |grammalecte-bugs|
+8.  License                                       |grammalecte-license|
+
+============================================================================
+
+1. Overview                                           *grammalecte-overview*
+
+This plugin integrates Grammalecte into Vim. Grammalecte is an Open Source
+style and grammar checker for French.
+
+See http://grammalecte.org/grammalecte for more details about Grammalecte.
+
+============================================================================
+
+2. Screenshot                                       *grammalecte-screenshot*
+
+If you don't have time to read help files, this screenshot will give you
+an idea of what the Grammalecte plugin does:
+
+  http://dominique.pelle.free.fr/pic/GrammalecteVimPlugin_en.png
+
+============================================================================
+
+3. Download                                           *grammalecte-download*
+
+You can download the latest version of this plugin from:
+
+  http://www.vim.org/scripts/script.php?script_id=???
+
+Or on github:
+
+  https://github.com/dpelle/vim-Grammalecte
+
+Grammalecte can be downloaded at:
+
+  http://www.dicollecte.org/grammalecte/telecharger.php
+
+This vim plugin requires Grammalecte version 0.5.12 or newer.
+
+============================================================================
+
+4. Installation                                   *grammalecte-installation*
+
+4.1 Installing the plugin
+
+Unzip file Grammalecte.zip plugin from in your personal |vimfiles| directory
+(~/.vim under Unix or %HOMEPATH%\vimfiles under Windows): >
+
+  $ mkdir ~/.vim
+  $ cd ~/.vim
+  $ unzip /path-to/Grammalecte.zip
+  $ vim -c 'helptags ~/.vim/doc'
+
+The zip file contains the following files: >
+
+  plugin/Grammalecte.vim
+  doc/Grammalecte.vim
+
+You have to enable plugins by adding these two lines in your |.vimrc| file: >
+
+  set nocompatible
+  filetype plugin on
+
+Alternatively, if you prefer to use Vundle or Pathogen plugin managers,
+the plugin is available on github at:
+
+  https://github.com/dpelle/vim-Grammalecte
+
+For example, using Vundle, you can install the plugin by adding
+this line in you ~/.vimrc: >
+
+  Plugin 'dpelle/vim-Grammalecte'
+
+4.2 Installing Grammalecte
+
+To use this plugin, you need to install the Python Grammalecte program.
+
+============================================================================
+
+5. Configuration                                 *grammalecte-configuration*
+
+Several global variables can be set in your |vimrc| to configure the behavior
+of the Grammalecte plugin.
+
+g:grammalecte_cli_py                                  *g:grammalecte_cli_py*
+
+
+  This variable specifies the location of the Grammalecte Python command
+  line grammar checker.
+
+  Example: >
+
+  :let g:grammalect_cli_pi='$HOME/Grammalecte-v0.5.9/pythonpath/cli.py'
+
+g:gammalecte_disable_rules                     *g:grammalecte_disable_rules*
+
+  This variable specifies the list of rules to disable, separated with spaces.
+  If the variable is not specified, the plugin disables those rules by default
+  which are more relevant for the LibreOffice plugin than for Vim: >
+
+  apostrophe_typographique
+  apostrophe_typographique_après_t
+  espaces_début_ligne espaces_milieu_ligne
+  espaces_fin_de_ligne
+  typo_points_suspension1
+  typo_tiret_incise
+  nbsp_avant_double_ponctuation
+  nbsp_avant_deux_points
+  nbsp_après_chevrons_ouvrants
+  nbsp_avant_chevrons_fermants1
+  unit_nbsp_avant_unités1
+  unit_nbsp_avant_unités2
+  unit_nbsp_avant_unités3
+
+g:grammalecte_win_height                          *g:grammalecte_win_height*
+
+  This variable specifies the height of the scratch window which contains
+  all grammatical mistakes with some explanations. You can use a negative
+  value to disable opening the scratch window. You can also make it empty ''
+  to let Vim pick a default size.
+  Default is: 14
+
+You can also customize the following syntax highlighting groups: >
+
+  GrammalecteCmd
+  GrammalecteErrorCount
+  GrammalecteLabel
+  GrammalecteUrl
+  GrammalecteGrammarError
+  GrammalecteSpellingError
+
+============================================================================
+
+6. Features                                           *grammalecte-features*
+
+The Grammalecte plugin defines 2 commands |:GrammalecteCheck| and
+|:GrammalecteClean|.
+
+:GrammalecteCheck                                         *:GrammalecteCheck*
+
+Use the |:GrammalecteCheck| command to check the grammar in the current
+buffer. This will highlight errors in the buffer. It will also open a new
+scratch window with the list of grammar mistakes with further explanations
+for each error. It also populates the location-list for the window.
+
+The |:GrammalecteCheck| command accepts a range. You can for example check
+grammar between lines 100 and 200 in buffer with :100,200GrammalecteCheck,
+check grammar in the visual selection with :<',>'GrammalecteCheck, etc.
+The default range is 1,$ (whole buffer).
+
+:GrammalecteClear                                       *:GrammalecteClear*
+
+Use the |:GrammalecteClear| command to clear highlighting of grammar
+mistakes, close the scratch window containing the list of errors, clear
+and close the location-list.
+
+The two commands are also available from the menu in gvim: >
+
+  Plugin -> Grammalecte -> Check
+                        -> Clear
+
+Using the error scratch window~
+
+Pressing <Enter> on an error in the error scratch buffer will jump to that
+error.
+
+Using the Location-list~
+
+The |location-list| is populated when running |:GrammalecteCheck|. So you can
+use location-list Vim commands such as |:lopen| to open the location-list
+window, |:lne| to jump to the next error, etc.
+
+The error scratch window may seem redundant with the location-list, but the
+scratch window is more flexible to present errors in a nice way. If you do
+not wish to popup the error scratch window, but use the location-list only,
+you can disable it by setting |g:grammalecte_win_height| to a negative value.
+
+============================================================================
+
+7. Bugs                                                   *grammalecte-bugs*
+
+Please report bugs or suggestions to <dominique.pelle@gmail.com>.
+Alternatively, you can also discuss improvements to this plugin in Wiki
+by clicking on the "Vim wiki" link at the top of the script page:
+
+  https://github.com/dpelle/vim-Grammalecte
+
+============================================================================
+
+8. Autre plugin pour la correction grammaticale
+
+LanguageTool is another grammar checker for several languages including
+French. A plugin for Vim is available at:
+
+  https://github.com/dpelle/vim-LanguageTool
+
+Checking text with Grammalecte or LanguageTool can find different errors,
+Installing both plugins is thus recommended.
+
+============================================================================
+
+9. License                                             *grammalecte-license*
+
+The VIM LICENSE applies to the Grammalecte.vim plugin (see |copyright|
+except use "Grammalecte.vim" instead of "Vim").
+
+Grammalecte is freely available under LGPL.
+
+============================================================================
+vim:tw=78:fo=tcq2:isk=!-~,^*,^\|,^\":ts=8:ft=help:norl:
+
