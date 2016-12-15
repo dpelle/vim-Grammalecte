@@ -24,7 +24,7 @@ For Vim version 8.0 and above
 This plugin integrates Grammalecte into Vim. Grammalecte is an Open Source
 style and grammar checker for French.
 
-See http://grammalecte.org/grammalecte for more details about Grammalecte.
+See http://dicollecte.org/grammalecte more details about Grammalecte.
 
 ============================================================================
 
