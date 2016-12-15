@@ -90,10 +90,10 @@ this line in you ~/.vimrc: >
 4.2 Installing Grammalecte
 
 To use this plugin, you need to install the Python Grammalecte program. 
-For this, unpack the OXT file into a folder of your liking, say 
+For this, unzip the OXT file into a folder of your liking, say 
 $HOME/Grammalecte-fr-v0.5.14, and point let g:grammalect_cli_py towards it:
 
-  let g:grammalect_cli_py='$HOME/Grammalecte-fr-v0.5.14/pythonpath/cli.py 
+  let g:grammalect_cli_py='$HOME/Grammalecte-fr-v0.5.14/pythonpath/cli.py' 
 
 ============================================================================
 
