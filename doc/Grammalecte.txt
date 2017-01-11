@@ -2,7 +2,7 @@
 *Grammalecte*
 
 Author:      Dominique Pellé <dominique.pelle@gmail.com>
-Last Change: 13 Dec 2016
+Last Change: 11 Jan 2017
 
 For Vim version 8.0 and above
 
@@ -149,6 +149,13 @@ You can also customize the following syntax highlighting groups: >
   GrammalecteGrammarError
   GrammalecteSpellingError
 
+For example, to highlight grammar errors in blue, and spelling errors in
+red, with a curly underline in vim GUIs that support it, add this into your
+.vimrc: >
+
+  hi GrammalecteGrammarError  guisp=blue gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=blue term=underline cterm=none
+  hi GrammalecteSpellingError guisp=red  gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=red  term=underline cterm=none
+
 ============================================================================
 
 6. Features                                           *grammalecte-features*
@@ -207,7 +214,7 @@ by clicking on the "Vim wiki" link at the top of the script page:
 
 ============================================================================
 
-8. Autre plugin pour la correction grammaticale
+8. Other grammar checker plugin
 
 LanguageTool is another grammar checker for several languages including
 French. A plugin for Vim is available at:
