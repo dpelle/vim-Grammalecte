@@ -10,7 +10,7 @@ See http://grammalecte.net for more details about Grammalecte.
 If you don't have time to read help files, this screenshot will give you
 an idea of what the Grammalecte plugin does:
 
-![alt text](http://dominique.pelle.free.fr/pic/GrammalecteVimPlugin.png "Grammalecte plugin")
+![alt text](http://dominique.pelle.free.fr/pic/GrammalecteVimTermPlugin.png "Grammalecte plugin")
 
 In GVim (with curly underlines to highlight errors):
 
