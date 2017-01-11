@@ -1,8 +1,8 @@
 " Grammalecte: French Grammar checker.
 " Maintainer:  Dominique Pellé <dominique.pelle@gmail.com>
 " Screenshots: http://dominique.pelle.free.fr/pic/GrammalecteVimPlugin.png
-" Last Change: 2016/01/21
-" Version:     0.1
+" Last Change: 2017/01/11
+" Version:     0.2
 "
 " Description: {{{1
 "
@@ -85,6 +85,12 @@ function s:GrammalecteHighlightRegex(start_line, end_line, start_column, end_col
   \    . '\%' . l:end_col_idx   . 'c'
 endfunction
 
+" Compare errors by Y first and then by X as tie-breaker.
+function s:CompareErrors(e1, e2) "{{{1
+  return a:e1['nStartY'] == a:e2['nStartY'] ? a:e1['nStartX'] - a:e2['nStartX' ]
+  \                                         : a:e1['nStartY'] - a:e2['nStartY']
+endfunction
+
 " This function performs grammar checking of text in the current buffer.
 " It highlights grammar mistakes in current buffer and opens a scratch
 " window with all errors found.  It also populates the location-list of
@@ -138,12 +144,7 @@ function s:GrammalecteCheck(line1, line2) "{{{1
     for l:errors_in_paragraph in l:errors
       let l:grammar_errors_in_paragraph  = l:errors_in_paragraph['lGrammarErrors']
       " Loop on errors in paragraph, ordered by their starting lines and starting columns.
-      for l:grammar_error in
-            \ sort(l:grammar_errors_in_paragraph,
-            \      { a, b ->
-            \        a['nStartY'] == b['nStartY'] ?
-            \        a['nStartX'] - b['nStartX' ] :
-            \        a['nStartY'] - b['nStartY'] })
+      for l:grammar_error in sort(l:grammar_errors_in_paragraph, "s:CompareErrors")
         let l:line_num_start = l:grammar_error['nStartY'] + a:line1 - 1
         let l:line_num_end   = l:grammar_error['nEndY']   + a:line1 - 1
         let l:col_num_start  = l:grammar_error['nStartX'] + 1
