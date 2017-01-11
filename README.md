@@ -5,12 +5,16 @@ Grammalecte is an Open Source grammar checker for French.
 
 See http://grammalecte.net for more details about Grammalecte.
 
-## Screenshot ###
+## Screenshots ###
 
 If you don't have time to read help files, this screenshot will give you
 an idea of what the Grammalecte plugin does:
 
-![alt text](http://dominique.pelle.free.fr/pic/GrammalecteVimPlugin.png "Grammalecte Vim plugin")
+![alt text](http://dominique.pelle.free.fr/pic/GrammalecteVimPlugin.png "Grammalecte plugin")
+
+In GVim (with curly underlines to highlight errors):
+
+![alt text](http://dominique.pelle.free.fr/pic/GrammalecteGVimPlugin.png "Grammalecte plugin in GVim")
 
 ## Installation ##
 
