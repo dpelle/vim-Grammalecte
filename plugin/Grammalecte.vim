@@ -33,6 +33,7 @@ endif
 let g:loaded_grammalecte = "1"
 
 " Set up configuration.
+" Returns 0 if success, < 0 in case of error.
 function s:GrammalecteSetUp() "{{{1
   " The plugin deactivates a few Grammalecte rules by default. User
   " can override what rules to deactivate by specifying rule names to
@@ -50,6 +51,24 @@ function s:GrammalecteSetUp() "{{{1
   let s:grammalecte_win_height = exists("g:grammalecte_win_height")
   \ ? g:grammalecte_win_height
   \ : 14
+
+  let s:grammalecte_cli_py = exists("g:grammalecte_cli_py")
+  \ ? g:grammalecte_cli_py
+  \ : $HOME . '/grammalecte/pythonpath/cli.py'
+
+  if !filereadable(s:grammalecte_cli_py)
+    " Hmmm, can't find the python file.  Try again with expand() in case user
+    " set it up as: let g:python_cli_py = '$HOME/grammalecte/pythonpath/cli.py'
+    let l:grammalecte_cli_py = expand(s:grammalecte_cli_py)
+    if !filereadable(expand(l:grammalecte_cli_py))
+      echomsg "Grammalecte cannot be found at: " . s:grammalecte_cli_py
+      echomsg "You need to install Grammalecte and/or set up g:grammalecte_cli_py"
+      echomsg "to indicate the location of the Grammalecte pythonpath/cli.py script."
+      return -1
+    endif
+    let s:grammalecte_cli_py = l:grammalecte_cli_py
+  endif
+
 endfunction
 
 " Jump to a grammar mistake (called when pressing <Enter>
@@ -98,7 +117,9 @@ endfunction
 " a:line1 and a:line2 parameters are the first and last line number of
 " the range of line to check.
 function s:GrammalecteCheck(line1, line2) "{{{1
-  call s:GrammalecteSetUp()
+  if s:GrammalecteSetUp() < 0
+    return -1
+  endif
   call s:GrammalecteClear()
 
   let s:grammalecte_text_win = winnr()
@@ -112,7 +133,7 @@ function s:GrammalecteCheck(line1, line2) "{{{1
   let l:range = a:line1 . ',' . a:line2
   silent exe l:range . 'w!' . l:tmpfilename
 
-  let l:grammalecte_cmd = 'python3 ' . g:grammalecte_cli_py
+  let l:grammalecte_cmd = 'python3 ' . s:grammalecte_cli_py
   \ . ' -f ' . l:tmpfilename
   \ . (empty(s:grammalecte_disable_rules) ? ' ' : (' -roff ' . s:grammalecte_disable_rules))
   \ . ' -j -cl -owe -ctx'
