@@ -136,11 +136,28 @@ function s:GrammalecteCheck(line1, line2) "{{{1
   let l:grammalecte_cmd = 'python3 ' . s:grammalecte_cli_py
   \ . ' -f ' . l:tmpfilename
   \ . (empty(s:grammalecte_disable_rules) ? ' ' : (' -roff ' . s:grammalecte_disable_rules))
-  \ . ' -j -cl -owe -ctx'
+  \ . ' -j -cl -owe -ctx 2> ' . l:tmperror
   let l:errors_json = system(l:grammalecte_cmd)
   call delete(l:tmpfilename)
+  if v:shell_error
+    echoerr 'Command [' . l:grammalecte_cmd . '] failed with error: '
+    \      . v:shell_error
+    if filereadable(l:tmperror)
+      echoerr string(readfile(l:tmperror))
+    endif
+    call delete(l:tmperror)
+    call s:GrammalecteClear()
+    return -1
+  endif
+  call delete(l:tmperror)
+
   %d
-  let l:errors = json_decode(l:errors_json)['data']
+  try
+    let l:errors = json_decode(l:errors_json)['data']
+  catch
+    echoerr "Error while decoding json output of Grammalecte. "
+    \     . "Try running Grammalecte in command line to diagnose."
+  endtry
 
   set bt=nofile
   setlocal nospell
