@@ -1,8 +1,8 @@
 " Grammalecte: French Grammar checker.
 " Maintainer:  Dominique Pellé <dominique.pelle@gmail.com>
 " Screenshots: http://dominique.pelle.free.fr/pic/GrammalecteVimPlugin.png
-" Last Change: 2017/01/11
-" Version:     0.2
+" Last Change: 2017/03/09
+" Version:     0.3
 "
 " Description: {{{1
 "
@@ -80,7 +80,11 @@ function <sid>JumpToCurrentError() "{{{1
     let l:matches = matchlist(getline('.'), '^Erreur :\s\+\(\d\+/\d\+ \S\+ @ \)\(\d\+\)L \(\d\+\)C$')
     let l:line = l:matches[2]
     let l:col = l:matches[3]
-    exe s:grammalecte_text_win . ' wincmd w'
+    if exists('*win_gotoid')
+      call win_gotoid(s:grammalecte_text_winid)
+    else
+      exe s:grammalecte_text_winid . ' wincmd w'
+    endif
     exe 'norm! ' . l:line . 'G0'
     if l:col > 0
       exe 'norm! ' . (l:col  - 1) . 'l'
@@ -122,9 +126,13 @@ function s:GrammalecteCheck(line1, line2) "{{{1
   endif
   call s:GrammalecteClear()
 
-  let s:grammalecte_text_win = winnr()
+  " Using window ID is more reliable than window number.
+  " But win_getid() does not exist in old version of Vim.
+  let s:grammalecte_text_winid = exists('*win_getid')
+  \                            ? win_getid() : winnr()
   sil %y
   botright new
+  set modifiable
   let s:grammalecte_error_buffer = bufnr('%')
   let l:tmpfilename = tempname()
   let l:tmperror    = tempname()
@@ -270,17 +278,22 @@ function s:GrammalecteClear() "{{{1
       sil! exe "bd! " . s:grammalecte_error_buffer
     endif
   endif
-  if exists('s:grammalecte_text_win')
+  if exists('s:grammalecte_text_winid')
     let l:win = winnr()
-    exe s:grammalecte_text_win . ' wincmd w'
+    " Using window ID is more reliable than window number.
+    " But win_getid() does not exist in old version of Vim.
+    if exists('*win_gotoid')
+      call win_gotoid(s:grammalecte_text_winid)
+    else
+      exe s:grammalecte_text_winid . ' wincmd w'
+    endif
     call setmatches(filter(getmatches(), 'v:val["group"] !~# "Grammalecte.*Error"'))
     lexpr ''
     lclose
     exe l:win . ' wincmd w'
   endif
   unlet! s:grammalecte_error_buffer
-  unlet! s:grammalecte_error_win
-  unlet! s:grammalecte_text_win
+  unlet! s:grammalecte_text_winid
 endfunction
 
 hi def link GrammalecteCmd           Comment
