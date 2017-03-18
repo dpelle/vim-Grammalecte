@@ -207,8 +207,7 @@ you can disable it by setting |g:grammalecte_win_height| to a negative value.
 7. Bugs                                                   *grammalecte-bugs*
 
 Please report bugs or suggestions to <dominique.pelle@gmail.com>.
-Alternatively, you can also discuss improvements to this plugin in Wiki
-by clicking on the "Vim wiki" link at the top of the script page:
+Alternatively, you can create an issue in github at:
 
   https://github.com/dpelle/vim-Grammalecte
 
