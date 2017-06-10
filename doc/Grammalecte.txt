@@ -2,7 +2,7 @@
 *Grammalecte*
 
 Author:      Dominique Pellé <dominique.pelle@gmail.com>
-Last Change: 11 Jan 2017
+Last Change: 19 Jun 2017
 
 For Vim version 8.0 and above
 
@@ -33,17 +33,14 @@ See http://dicollecte.org/grammalecte more details about Grammalecte.
 If you don't have time to read help files, this screenshot will give you
 an idea of what the Grammalecte plugin does:
 
+  http://dominique.pelle.free.fr/pic/GrammalecteGVimPlugin.png
   http://dominique.pelle.free.fr/pic/GrammalecteVimPlugin.png
 
 ============================================================================
 
 3. Download                                           *grammalecte-download*
 
-You can download the latest version of this plugin from:
-
-  http://www.vim.org/scripts/script.php?script_id=5497
-
-Or on github:
+You can download the latest version of this plugin at:
 
   https://github.com/dpelle/vim-Grammalecte
 

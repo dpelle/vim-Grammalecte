@@ -1,8 +1,8 @@
 " Grammalecte: French Grammar checker.
 " Maintainer:  Dominique Pellé <dominique.pelle@gmail.com>
 " Screenshots: http://dominique.pelle.free.fr/pic/GrammalecteVimPlugin.png
-" Last Change: 2017/03/09
-" Version:     0.3
+" Last Change: 2017/06/10
+" Version:     0.4
 "
 " Description: {{{1
 "
@@ -38,11 +38,17 @@ function s:GrammalecteSetUp() "{{{1
   " The plugin deactivates a few Grammalecte rules by default. User
   " can override what rules to deactivate by specifying rule names to
   " disable, separated with space, in the option g:grammalecte_disable_rules.
+  "
+  " Note that a few rules were renamed in Grammalecte-fr-v0.5.17
+  " (espaces_début_ligne -> esp_debut_ligne, etc.). The default settings
+  " lists rule names in old and new versions of Grammalecte so that the
+  " plugin behaves sensibly regardless of the installed version of Grammalecte.
   let s:grammalecte_disable_rules =
   \ exists("g:grammalecte_disable_rules")
   \ ? g:grammalecte_disable_rules
   \ : 'apostrophe_typographique apostrophe_typographique_après_t '
   \ . 'espaces_début_ligne espaces_milieu_ligne espaces_fin_de_ligne '
+  \ . 'esp_début_ligne esp_milieu_ligne esp_fin_ligne esp_mélangés2 '
   \ . 'typo_points_suspension1 typo_tiret_incise '
   \ . 'nbsp_avant_double_ponctuation nbsp_avant_deux_points '
   \ . 'nbsp_après_chevrons_ouvrants nbsp_avant_chevrons_fermants1 '
