@@ -86,11 +86,18 @@ this line in you ~/.vimrc: >
 
 4.2 Installing Grammalecte
 
-To use this plugin, you need to install the Python Grammalecte program. 
-For this, unzip the OXT file into a folder of your liking, say 
-$HOME/Grammalecte-fr-v0.5.14, and point let g:grammalect_cli_py towards it:
+To use this plugin, you need to install the Python Grammalecte command
+line interface available at: https://dicollecte.org/grammalecte/telecharger.php
 
-  let g:grammalect_cli_py='$HOME/Grammalecte-fr-v0.5.14/pythonpath/cli.py' 
+Here is how to install Grammalecte CLI:
+
+  $ mkdir Grammalecte-fr-v0.5.17
+  $ wget http://www.dicollecte.org/grammalecte/oxt/Grammalecte-fr-v0.5.17.zip
+  $ unzip Grammalecte-fr-v0.5.17.zip
+
+Then set g:grammalect_cli_py in your .virmc to point to the file cli.py:
+
+  let g:grammalect_cli_py='$HOME/Grammalecte-fr-v0.5.17/cli.py' 
 
 ============================================================================
 
@@ -107,7 +114,7 @@ g:grammalecte_cli_py                                  *g:grammalecte_cli_py*
 
   Example: >
 
-  :let g:grammalect_cli_py='$HOME/Grammalecte-fr-v0.5.14/pythonpath/cli.py'
+  :let g:grammalect_cli_py='$HOME/Grammalecte-fr-v0.5.17/cli.py'
 
 g:gammalecte_disable_rules                     *g:grammalecte_disable_rules*
 
