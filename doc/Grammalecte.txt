@@ -164,10 +164,10 @@ colorscheme:
 
 6. Features                                           *grammalecte-features*
 
-The Grammalecte plugin defines 2 commands |:GrammalecteCheck| and
-|:GrammalecteClean|.
+The Grammalecte plugin defines 3 commands |:GrammalecteCheck|,
+|:GrammalecteClean| and |:Grammalecte|.
 
-:GrammalecteCheck                                         *:GrammalecteCheck*
+:GrammalecteCheck                                        *:GrammalecteCheck*
 
 Use the |:GrammalecteCheck| command to check the grammar in the current
 buffer. This will highlight errors in the buffer. It will also open a new
@@ -179,13 +179,20 @@ grammar between lines 100 and 200 in buffer with :100,200GrammalecteCheck,
 check grammar in the visual selection with :<',>'GrammalecteCheck, etc.
 The default range is 1,$ (whole buffer).
 
-:GrammalecteClear                                       *:GrammalecteClear*
+:GrammalecteClear                                        *:GrammalecteClear*
 
 Use the |:GrammalecteClear| command to clear highlighting of grammar
 mistakes, close the scratch window containing the list of errors, clear
 and close the location-list.
 
-The two commands are also available from the menu in gvim: >
+:Grammalecte                                                  *:Grammalecte*
+
+Use the |:Grammalecte| command to toggle checking of grammar mistakes. It
+allows you to define toggle remap like:
+
+  nnoremap <Leader>tg :Grammalecte<Return>
+
+The two main commands are also available from the menu in gvim: >
 
   Plugin -> Grammalecte -> Check
                         -> Clear

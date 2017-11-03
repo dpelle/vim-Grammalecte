@@ -302,6 +302,20 @@ function s:GrammalecteClear() "{{{1
   unlet! s:grammalecte_text_winid
 endfunction
 
+function s:Grammalecte(bang, line1, line2)
+  if a:bang
+    if exists('s:grammalecte_text_winid')
+      call s:GrammalecteClear()
+    endif
+  else
+    if exists('s:grammalecte_text_winid') == 0
+      call s:GrammalecteCheck(a:line1, a:line2)
+    else
+      call s:GrammalecteClear()
+    end
+  end
+endfunction
+
 hi def link GrammalecteCmd           Comment
 hi def link GrammalecteErrorCount    Title
 hi def link GrammalecteLabel         Label
@@ -319,4 +333,7 @@ endif
 com! -nargs=0          GrammalecteClear :call s:GrammalecteClear()
 com! -nargs=0 -range=% GrammalecteCheck :call s:GrammalecteCheck(<line1>,
                                                                \ <line2>)
+com! -nargs=0 -range=% -bar -bang Grammalecte :call s:Grammalecte(<bang>0,
+                                                                \ <line1>,
+                                                                \ <line2>)
 " vim: fdm=marker
