@@ -23,7 +23,7 @@ In GVim (with curly underlines to highlight errors):
 This plugin contains 2 files:
 
 	plugin/Grammalecte.vim
-	doc/Grammalecte.vim
+	doc/Grammalecte.txt
 
 Copy those files respectively into ~/.vim/plugin and ~/.vim/doc/
 directories, and update the documentation tags using:
