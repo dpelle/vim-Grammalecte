@@ -62,8 +62,8 @@ of Grammalecte into your ~/.vimrc file using something like:
 
 ## Description ##
 
-The Grammalecte plugin defines 2 commands :GrammalecteCheck and
-:GrammalecteClean.
+The Grammalecte plugin defines 3 commands :GrammalecteCheck, :GrammalecteClean
+and :Grammalecte.
 
 	:GrammalecteCheck
 
@@ -82,6 +82,13 @@ The default range is 1,$ (whole buffer).
 Use the :GrammalecteClear command to clear highlighting of grammar
 mistakes, close the scratch window containing the list of errors, clear
 and close the location-list.
+
+	:Grammalecte
+
+Use the :Grammalecte command to toggle checking of grammar mistakes. It
+allows you to define toggle remap like:
+
+	nnoremap <Leader>tg :Grammalecte<Return>
 
 See  :help Grammalecte  for more details.
 
