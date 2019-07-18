@@ -63,7 +63,7 @@ of Grammalecte into your ~/.vimrc file using something like:
 ## Description ##
 
 The Grammalecte plugin defines 2 commands :GrammalecteCheck and
-:GrammalecteClean.
+:GrammalecteClear.
 
 	:GrammalecteCheck
 
