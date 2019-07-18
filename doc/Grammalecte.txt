@@ -165,7 +165,7 @@ colorscheme:
 6. Features                                           *grammalecte-features*
 
 The Grammalecte plugin defines 2 commands |:GrammalecteCheck| and
-|:GrammalecteClean|.
+|:GrammalecteClear|.
 
 :GrammalecteCheck                                         *:GrammalecteCheck*
 
