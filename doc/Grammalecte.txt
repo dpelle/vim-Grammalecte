@@ -114,9 +114,9 @@ g:grammalecte_cli_py                                  *g:grammalecte_cli_py*
 
   Example: >
 
-  :let g:grammalect_cli_py='$HOME/Grammalecte-fr-v0.5.17/cli.py'
+  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v0.5.17/cli.py'
 
-g:gammalecte_disable_rules                     *g:grammalecte_disable_rules*
+g:grammalecte_disable_rules                    *g:grammalecte_disable_rules*
 
   This variable specifies the list of rules to disable, separated with spaces.
   If the variable is not specified, the plugin disables those rules by default
