@@ -58,22 +58,9 @@ function s:GrammalecteSetUp() "{{{1
   \ ? g:grammalecte_win_height
   \ : 14
 
-  let s:grammalecte_cli_py = exists("g:grammalecte_cli_py")
-  \ ? g:grammalecte_cli_py
-  \ : $HOME . '/grammalecte/pythonpath/cli.py'
-
-  if !filereadable(s:grammalecte_cli_py)
-    " Hmmm, can't find the python file.  Try again with expand() in case user
-    " set it up as: let g:python_cli_py = '$HOME/grammalecte/pythonpath/cli.py'
-    let l:grammalecte_cli_py = expand(s:grammalecte_cli_py)
-    if !filereadable(expand(l:grammalecte_cli_py))
-      echomsg "Grammalecte cannot be found at: " . s:grammalecte_cli_py
-      echomsg "You need to install Grammalecte and/or set up g:grammalecte_cli_py"
-      echomsg "to indicate the location of the Grammalecte pythonpath/cli.py script."
-      return -1
-    endif
-    let s:grammalecte_cli_py = l:grammalecte_cli_py
-  endif
+  let s:grammalecte_cmd = exists("g:grammalecte_cmd")
+  \ ? g:grammalecte_cmd
+  \ : 'grammalecte-cli.py'
 
 endfunction
 
@@ -147,7 +134,7 @@ function s:GrammalecteCheck(line1, line2) "{{{1
   let l:range = a:line1 . ',' . a:line2
   silent exe l:range . 'w!' . l:tmpfilename
 
-  let l:grammalecte_cmd = 'python3 ' . s:grammalecte_cli_py
+  let l:grammalecte_cmd = s:grammalecte_cmd
   \ . ' -f ' . l:tmpfilename
   \ . (empty(s:grammalecte_disable_rules) ? ' ' : (' -roff ' . s:grammalecte_disable_rules))
   \ . ' -j -cl -owe -ctx 2> ' . l:tmperror

@@ -55,10 +55,16 @@ Grammalecte can be downloaded at:
 
 This vim plugin requires Grammalecte version 0.5.12 or newer.
 
-Unzip the Grammalecte-fr-v0.5.\*oxt file and specify the location
+Unzip the Grammalecte-fr-v0.5.\*zip file install it with:
+
+```
+pip3 install .
+```
+
+If you don't want to install it you can specify the location
 of Grammalecte into your ~/.vimrc file using something like:
 
-	let g:grammalecte_cli_py='~/Downloads/Grammalecte-fr-v0.5.14/pythonpath/cli.py'
+	let g:grammalecte_cmd='python3 ~/Downloads/Grammalecte-fr-v0.5.14/pythonpath/cli.py'
 
 ## Description ##
 
