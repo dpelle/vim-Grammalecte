@@ -51,7 +51,7 @@ this line in you ~/.vimrc:
 To use this plugin, you need to install the Python Grammalecte program.
 Grammalecte can be downloaded at:
 
-	http://www.dicollecte.org/grammalecte/telecharger.php
+	https://grammalecte.net/#download
 
 This vim plugin requires Grammalecte version 0.5.12 or newer.
 
