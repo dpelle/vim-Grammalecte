@@ -49,16 +49,18 @@ this line in you ~/.vimrc:
 ### Installing Grammalecte ###
 
 To use this plugin, you need to install the Python Grammalecte program.
-Grammalecte can be downloaded at:
+Grammalecte CLI & Server can be downloaded at:
 
 	http://www.dicollecte.org/grammalecte/telecharger.php
 
-This vim plugin requires Grammalecte version 0.5.12 or newer.
+Or:
 
-Unzip the Grammalecte-fr-v0.5.\*oxt file and specify the location
+	$ wget https://grammalecte.net/grammalecte/zip/Grammalecte-fr-v1.8.0.zip
+
+Unzip the Grammalecte-fr-v1.8.0.zip file and specify the location
 of Grammalecte into your ~/.vimrc file using something like:
 
-	let g:grammalecte_cli_py='~/Downloads/Grammalecte-fr-v0.5.14/pythonpath/cli.py'
+	let g:grammalecte_cli_py='~/Downloads/Grammalecte-fr-v1.8.0/grammalecte-cli.py'
 
 ## Description ##
 

@@ -89,15 +89,17 @@ this line in you ~/.vimrc: >
 To use this plugin, you need to install the Python Grammalecte command
 line interface available at: https://dicollecte.org/grammalecte/telecharger.php
 
-Here is how to install Grammalecte CLI:
+Here is how to install Grammalecte CLI: >
 
-  $ mkdir Grammalecte-fr-v0.5.17
-  $ wget http://www.dicollecte.org/grammalecte/oxt/Grammalecte-fr-v0.5.17.zip
-  $ unzip Grammalecte-fr-v0.5.17.zip
+  $ mkdir Grammalecte-fr-v1.8.0
+  $ cd Grammalecte-fr-v1.8.0
+  $ wget https://grammalecte.net/grammalecte/zip/Grammalecte-fr-v1.8.0.zip
+  $ unzip Grammalecte-fr-v1.8.0.zip
 
-Then set g:grammalecte_cli_py in your .virmc to point to the file cli.py:
+Then set g:grammalecte_cli_py in your .virmc to point to the file
+grammalecte-cli.py: >
 
-  let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v0.5.17/cli.py' 
+  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v1.8.0/grammalecte-cli.py'
 
 ============================================================================
 
@@ -114,7 +116,7 @@ g:grammalecte_cli_py                                  *g:grammalecte_cli_py*
 
   Example: >
 
-  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v0.5.17/cli.py'
+  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v1.8.0/grammalecte-cli.py'
 
 g:grammalecte_disable_rules                    *g:grammalecte_disable_rules*
 
@@ -155,7 +157,7 @@ You can also customize the following syntax highlighting groups: >
 
 For example, to highlight grammar errors in blue, and spelling errors in
 red, with a curly underline in vim GUIs that support it, add this into your
-colorscheme:
+colorscheme: >
 
   hi GrammalecteGrammarError  guisp=blue gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=blue term=underline cterm=none
   hi GrammalecteSpellingError guisp=red  gui=undercurl guifg=NONE guibg=NONE ctermfg=white ctermbg=red  term=underline cterm=none
