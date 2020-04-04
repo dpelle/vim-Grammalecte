@@ -95,9 +95,9 @@ Here is how to install Grammalecte CLI:
   $ wget http://www.dicollecte.org/grammalecte/oxt/Grammalecte-fr-v0.5.17.zip
   $ unzip Grammalecte-fr-v0.5.17.zip
 
-Then set g:grammalect_cli_py in your .virmc to point to the file cli.py:
+Then set g:grammalecte_cli_py in your .virmc to point to the file cli.py:
 
-  let g:grammalect_cli_py='$HOME/Grammalecte-fr-v0.5.17/cli.py' 
+  let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v0.5.17/cli.py' 
 
 ============================================================================
 
@@ -114,7 +114,7 @@ g:grammalecte_cli_py                                  *g:grammalecte_cli_py*
 
   Example: >
 
-  :let g:grammalect_cli_py='$HOME/Grammalecte-fr-v0.5.17/cli.py'
+  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v0.5.17/cli.py'
 
 g:gammalecte_disable_rules                     *g:grammalecte_disable_rules*
 
