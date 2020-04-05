@@ -2,7 +2,7 @@
 *Grammalecte*
 
 Author:      Dominique Pellé <dominique.pelle@gmail.com>
-Last Change: 19 Jun 2017
+Last Change: 05 Apr 2020
 
 For Vim version 8.0 and above
 
