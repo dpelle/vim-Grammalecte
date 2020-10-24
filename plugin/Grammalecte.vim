@@ -147,7 +147,7 @@ function s:GrammalecteCheck(line1, line2) "{{{1
   let l:range = a:line1 . ',' . a:line2
   silent exe l:range . 'w!' . l:tmpfilename
 
-  let l:grammalecte_cmd = 'python3 ' . s:grammalecte_cli_py
+  let l:grammalecte_cmd = s:grammalecte_cli_py
   \ . ' -f ' . l:tmpfilename
   \ . (empty(s:grammalecte_disable_rules) ? ' ' : (' -roff ' . s:grammalecte_disable_rules))
   \ . ' -j -cl -owe -ctx 2> ' . l:tmperror
