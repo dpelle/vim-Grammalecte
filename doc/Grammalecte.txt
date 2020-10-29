@@ -2,7 +2,7 @@
 *Grammalecte*
 
 Author:      Dominique Pellé <dominique.pelle@gmail.com>
-Last Change: 05 Apr 2020
+Last Change: 29 Oct 2020
 
 For Vim version 8.0 and above
 
@@ -45,8 +45,8 @@ You can download the latest version of this plugin at:
   https://github.com/dpelle/vim-Grammalecte
 
 Grammalecte can be downloaded at:
- 
-  http://www.dicollecte.org/grammalecte/telecharger.php
+
+  https://grammalecte.net/#download
 
 This vim plugin requires Grammalecte version 0.5.12 or newer.
 
@@ -240,4 +240,3 @@ Grammalecte is freely available under LGPL.
 
 ============================================================================
 vim:tw=78:fo=tcq2:isk=!-~,^*,^\|,^\":ts=8:ft=help:norl:
-
