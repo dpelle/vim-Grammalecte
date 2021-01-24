@@ -66,21 +66,26 @@ Unzip file Grammalecte.zip plugin from in your personal |vimfiles| directory
 
 The zip file contains the following files: >
 
+  autoload/grammalecte.vim
   plugin/Grammalecte.vim
-  doc/Grammalecte.vim
+  doc/Grammalecte.txt
 
 You have to enable plugins by adding these two lines in your |.vimrc| file: >
 
   set nocompatible
   filetype plugin on
 
-Alternatively, if you prefer to use Vundle or Pathogen plugin managers,
+Alternatively, if you prefer to use vim-plug, Vundle, Pathogen plugin managers,
 the plugin is available on github at:
 
   https://github.com/dpelle/vim-Grammalecte
 
-For example, using Vundle, you can install the plugin by adding
-this line in you ~/.vimrc: >
+For example, using vim-plug, you can install the plugin by adding this line
+in you ~/.vimrc: >
+
+  Plug 'dpelle/vim-Grammalecte'
+
+Or using Vundle, you can install the plugin by adding this line in you ~/.vimrc: >
 
   Plugin 'dpelle/vim-Grammalecte'
 

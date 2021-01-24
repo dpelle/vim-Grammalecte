@@ -20,13 +20,14 @@ In GVim (with curly underlines to highlight errors):
 
 ### Installing the plugin ###
 
-This plugin contains 2 files:
+This plugin contains 3 files:
 
+	autoload/grammalecte.vim
 	plugin/Grammalecte.vim
 	doc/Grammalecte.txt
 
-Copy those files respectively into ~/.vim/plugin and ~/.vim/doc/
-directories, and update the documentation tags using:
+Copy those files respectively into ~/.vim/autoload/ ,  ~/.vim/plugin
+and ~/.vim/doc/ directories, and update the documentation tags using:
 
 	vim -c 'helptags ~/.vim/doc'
 
@@ -36,15 +37,20 @@ file:
 	set nocompatible
 	filetype plugin on
 
-If you prefer to use Vundle or Pathogen plugin managers,
+If you prefer to use vim-plug, Vundle or Pathogen plugin managers,
 the plugin is available on github at:
 
 	https://github.com/dpelle/vim-Grammalecte
 
-For example, using Vundle, you can install the plugin by adding
-this line in you ~/.vimrc:
+For example, using vim-plug, you can install the plugin by adding this line
+in you ~/.vimrc:
 
-	Plugin 'dpelle/vim-Grammalecte'
+  Plug 'dpelle/vim-Grammalecte'
+
+Or using Vundle, you can install the plugin by adding this line in you ~/.vimrc:
+
+  Plugin 'dpelle/vim-Grammalecte'
+
 
 ### Installing Grammalecte ###
 
