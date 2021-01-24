@@ -51,16 +51,16 @@ this line in you ~/.vimrc:
 To use this plugin, you need to install the Python Grammalecte program.
 Grammalecte CLI & Server can be downloaded at:
 
-	http://www.dicollecte.org/grammalecte/telecharger.php
+	https://grammalecte.net/#download
 
 Or:
 
-	$ wget https://grammalecte.net/grammalecte/zip/Grammalecte-fr-v1.8.0.zip
+	$ wget https://grammalecte.net/grammalecte/zip/Grammalecte-fr-v1.9.0.zip
 
-Unzip the Grammalecte-fr-v1.8.0.zip file and specify the location
+Unzip the Grammalecte-fr-v1.9.0.zip file and specify the location
 of Grammalecte into your ~/.vimrc file using something like:
 
-	let g:grammalecte_cli_py='~/Downloads/Grammalecte-fr-v1.8.0/grammalecte-cli.py'
+	let g:grammalecte_cli_py='~/Downloads/Grammalecte-fr-v1.9.0.zip/grammalecte-cli.py'
 
 ## Description ##
 

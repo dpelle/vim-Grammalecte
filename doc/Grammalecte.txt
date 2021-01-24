@@ -24,7 +24,7 @@ For Vim version 8.0 and above
 This plugin integrates Grammalecte into Vim. Grammalecte is an Open Source
 style and grammar checker for French.
 
-See http://dicollecte.org/grammalecte more details about Grammalecte.
+See https://grammalecte.net/ more details about Grammalecte.
 
 ============================================================================
 
@@ -87,19 +87,19 @@ this line in you ~/.vimrc: >
 4.2 Installing Grammalecte
 
 To use this plugin, you need to install the Python Grammalecte command
-line interface available at: https://dicollecte.org/grammalecte/telecharger.php
+line interface available at: https://grammalecte.net/#download
 
 Here is how to install Grammalecte CLI: >
 
-  $ mkdir Grammalecte-fr-v1.8.0
-  $ cd Grammalecte-fr-v1.8.0
-  $ wget https://grammalecte.net/grammalecte/zip/Grammalecte-fr-v1.8.0.zip
-  $ unzip Grammalecte-fr-v1.8.0.zip
+  $ mkdir Grammalecte-fr-v1.9.0
+  $ cd Grammalecte-fr-v1.9.0
+  $ wget https://grammalecte.net/grammalecte/zip/Grammalecte-fr-v1.9.0.zip
+  $ unzip Grammalecte-fr-v1.9.0.zip
 
 Then set g:grammalecte_cli_py in your .virmc to point to the file
 grammalecte-cli.py: >
 
-  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v1.8.0/grammalecte-cli.py'
+  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v1.9.0/grammalecte-cli.py'
 
 ============================================================================
 
@@ -116,7 +116,7 @@ g:grammalecte_cli_py                                  *g:grammalecte_cli_py*
 
   Example: >
 
-  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v1.8.0/grammalecte-cli.py'
+  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v1.9.0/grammalecte-cli.py'
 
 g:grammalecte_disable_rules                    *g:grammalecte_disable_rules*
 

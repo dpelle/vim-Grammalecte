@@ -10,7 +10,7 @@
 " See doc/Grammalecte.txt for more details about how to use the Grammalecte
 " plugin.
 "
-" See http://dicollecte.org/grammalecte for more information about Grammalecte.
+" See https://grammalecte.net for more information about Grammalecte.
 "
 " Implementation is quite similar to the LanguageTool vim plugin.
 "
