@@ -2,7 +2,7 @@
 *Grammalecte*
 
 Author:      Dominique Pellé <dominique.pelle@gmail.com>
-Last Change: 29 Oct 2020
+Last Change: 23 Jan 2020
 
 For Vim version 8.0 and above
 
@@ -96,15 +96,37 @@ line interface available at: https://grammalecte.net/#download
 
 Here is how to install Grammalecte CLI: >
 
-  $ mkdir Grammalecte-fr-v1.9.0
-  $ cd Grammalecte-fr-v1.9.0
-  $ wget https://grammalecte.net/grammalecte/zip/Grammalecte-fr-v1.9.0.zip
-  $ unzip Grammalecte-fr-v1.9.0.zip
+  $ mkdir Grammalecte-fr-v2.0.0
+  $ cd Grammalecte-fr-v2.0.0
+  $ wget https://grammalecte.net/grammalecte/zip/Grammalecte-fr-v2.0.0.zip
+  $ unzip Grammalecte-fr-v2.0.0.zip
 
 Then set g:grammalecte_cli_py in your .virmc to point to the file
 grammalecte-cli.py: >
 
-  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v1.9.0/grammalecte-cli.py'
+  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v2.0.0/grammalecte-cli.py'
+
+Note: that since version 2.0.0, Grammalecte gives an error if Python is older
+than Python-3.7+. See: https://grammalecte.net/thread.php?prj=fr&t=943.
+Some Linux distributions may not include such a recent version of Python.
+For example, Ubuntu-18.04.5 includes Python-3.6.9. Yet Grammalecte works
+fine with older versions than Python-3.7+ so the workaround is to ignore
+the version check using the following patch: >
+
+  diff --git a/grammalecte-cli.py.orig b/grammalecte-cli.py
+  index ec2e7e9..56e75e7 100644
+  --- a/grammalecte-cli.py.orig
+  +++ b/grammalecte-cli.py
+  @@ -132,9 +132,6 @@ def getCommand ():
+   
+   def main ():
+       "launch the CLI (command line interface)"
+  -    if sys.version < "3.7":
+  -        print("Python 3.7+ required")
+  -        return
+   
+       xParser = argparse.ArgumentParser()
+       xParser.add_argument("-f", "--file", help="parse file (UTF-8 required!) [on Windows, -f is similar to -ff]", type=str)
 
 ============================================================================
 
@@ -121,7 +143,7 @@ g:grammalecte_cli_py                                  *g:grammalecte_cli_py*
 
   Example: >
 
-  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v1.9.0/grammalecte-cli.py'
+  :let g:grammalecte_cli_py='$HOME/Grammalecte-fr-v2.0.0/grammalecte-cli.py'
 
 g:grammalecte_disable_rules                    *g:grammalecte_disable_rules*
 

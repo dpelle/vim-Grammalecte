@@ -16,57 +16,12 @@ In GVim (with curly underlines to highlight errors):
 
 ![alt text](http://dominique.pelle.free.fr/pic/GrammalecteGVimPlugin.png "Grammalecte plugin in GVim")
 
-## Installation ##
+### Installing and configuration ###
 
-### Installing the plugin ###
+To install and configure the vim-Grammalecte plugin, refer to
+the documentation:
 
-This plugin contains 3 files:
-
-	autoload/grammalecte.vim
-	plugin/Grammalecte.vim
-	doc/Grammalecte.txt
-
-Copy those files respectively into ~/.vim/autoload/ ,  ~/.vim/plugin
-and ~/.vim/doc/ directories, and update the documentation tags using:
-
-	vim -c 'helptags ~/.vim/doc'
-
-You also have to enable plugins by adding these two lines in your .vimrc
-file:
-
-	set nocompatible
-	filetype plugin on
-
-If you prefer to use vim-plug, Vundle or Pathogen plugin managers,
-the plugin is available on github at:
-
-	https://github.com/dpelle/vim-Grammalecte
-
-For example, using vim-plug, you can install the plugin by adding this line
-in you ~/.vimrc:
-
-  Plug 'dpelle/vim-Grammalecte'
-
-Or using Vundle, you can install the plugin by adding this line in you ~/.vimrc:
-
-  Plugin 'dpelle/vim-Grammalecte'
-
-
-### Installing Grammalecte ###
-
-To use this plugin, you need to install the Python Grammalecte program.
-Grammalecte CLI & Server can be downloaded at:
-
-	https://grammalecte.net/#download
-
-Or:
-
-	$ wget https://grammalecte.net/grammalecte/zip/Grammalecte-fr-v1.9.0.zip
-
-Unzip the Grammalecte-fr-v1.9.0.zip file and specify the location
-of Grammalecte into your ~/.vimrc file using something like:
-
-	let g:grammalecte_cli_py='~/Downloads/Grammalecte-fr-v1.9.0.zip/grammalecte-cli.py'
+  https://github.com/dpelle/vim-Grammalecte/blob/master/doc/Grammalecte.txt
 
 ## Description ##
 
