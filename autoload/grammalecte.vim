@@ -111,20 +111,25 @@ function grammalecte#Check(line1, line2) "{{{1
   botright new
   set modifiable
   let s:grammalecte_error_buffer = bufnr('%')
-  let l:tmpfilename = tempname()
+  let l:tmpfilenameRoot = tempname()
+  let l:GrammalecteInputFile = l:tmpfilenameRoot . ".txt"
+  let l:GrammalecteOutputFile = l:tmpfilenameRoot . ".res.txt"
   let l:tmperror    = tempname()
   sil put!
 
   let l:range = a:line1 . ',' . a:line2
-  silent exe l:range . 'w!' . l:tmpfilename
+  silent exe l:range . 'w! ++enc=utf8 ' . l:GrammalecteInputFile
 
   let l:python = executable('python3') ? 'python3 ' : ''
   let l:grammalecte_cmd = l:python . s:grammalecte_cli_py
-  \ . ' -f ' . l:tmpfilename
-  \ . (empty(s:grammalecte_disable_rules) ? ' ' : (' -roff ' . s:grammalecte_disable_rules))
-  \ . ' -j -cl -owe -ctx 2> ' . l:tmperror
-  let l:errors_json = system(l:grammalecte_cmd)
-  call delete(l:tmpfilename)
+  \ . ' --file_to_file ' . l:GrammalecteInputFile
+  \ . (empty(s:grammalecte_disable_rules) ? ' ' : (' --rule_off ' . s:grammalecte_disable_rules))
+  \ . ' --json --concat_lines --only_when_errors --context 2> ' . l:tmperror
+  call system(l:grammalecte_cmd)
+  let l:errors_json = join(readfile(l:GrammalecteOutputFile))
+  call delete(l:GrammalecteInputFile)
+  call delete(l:GrammalecteOutputFile)
+  call delete(l:tmperror)
   if v:shell_error
     echoerr 'Command [' . l:grammalecte_cmd . '] failed with error: '
     \      . v:shell_error
