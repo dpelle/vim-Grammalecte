@@ -89,6 +89,30 @@ Or using Vundle, you can install the plugin by adding this line in you ~/.vimrc:
 
   Plugin 'dpelle/vim-Grammalecte'
 
+Alternatively, when using neovim, you can install grammalecte.py alongside 
+vim-gramalecte with lazy.nvim >
+
+  {
+	  "dpelle/vim-Grammalecte",
+  	build = function()
+  		local grammalecte_url = "https://grammalecte.net/zip/Grammalecte-fr-v2.1.1.zip"
+  		Grammalecte_path = vim.fn.expand("~/.local/share/nvim/grammalecte")
+  		vim.fn.mkdir(Grammalecte_path, "p")
+  		vim.fn.system({ "curl", "-L", grammalecte_url, "-o", Grammalecte_path .. "/grammalecte.zip" })
+  		vim.fn.system({ "unzip", Grammalecte_path .. "/grammalecte.zip", "-d", Grammalecte_path })
+  	end,
+  	config = function()
+  		vim.g.grammalecte_cli_py = vim.fn.expand("~/.local/share/nvim/grammalecte/grammalecte-cli.py")
+  	end,
+  	cmd = { "GrammalecteCheck", "GrammalecteClear" },
+  	keys = {
+      -- Configure your keybindings here:
+  		{ "<leader>cg", "<cmd>GrammalecteCheck<cr>" }, -- C.heck G.rammar
+  		{ "<leader>cs", "<cmd>GrammalecteClear<cr>" }, -- C.heck S.top
+  	},
+  }
+
+
 4.2 Installing Grammalecte
 
 To use this plugin, you need to install the Python Grammalecte command
