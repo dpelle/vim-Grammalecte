@@ -89,7 +89,7 @@ Or using Vundle, you can install the plugin by adding this line in you ~/.vimrc:
 
   Plugin 'dpelle/vim-Grammalecte'
 
-Alternatively, when using neovim, you can install grammalecte.py alongside 
+Alternatively, when using neovim, you can install grammalecte-cli alongside 
 vim-gramalecte with lazy.nvim >
 
   {
