@@ -33,17 +33,24 @@ function s:GrammalecteSetUp() "{{{1
   \ ? g:grammalecte_cli_py
   \ : $HOME . '/grammalecte/pythonpath/cli.py'
 
-  if !filereadable(s:grammalecte_cli_py)
-    " Hmmm, can't find the python file.  Try again with expand() in case user
-    " set it up as: let g:python_cli_py = '$HOME/grammalecte/pythonpath/cli.py'
-    let l:grammalecte_cli_py = expand(s:grammalecte_cli_py)
-    if !filereadable(expand(l:grammalecte_cli_py))
-      echomsg "Grammalecte cannot be found at: " . s:grammalecte_cli_py
-      echomsg "You need to install Grammalecte and/or set up g:grammalecte_cli_py"
-      echomsg "to indicate the location of the Grammalecte pythonpath/cli.py script."
-      return -1
+  if executable('grammalecte-cli.py')
+      " check if grammalecte-cli.py is available as an executable. if it is,
+      " there is no need to build a function like `python3 /path/to/cli.py`
+      let s:grammalecte_cmd = 'grammalecte-cli.py'
+  else
+    if !filereadable(s:grammalecte_cli_py)
+        " Hmmm, can't find the python file.  Try again with expand() in case user
+        " set it up as: let g:python_cli_py = '$HOME/grammalecte/pythonpath/cli.py'
+        let l:grammalecte_cli_py = expand(s:grammalecte_cli_py)
+        if !filereadable(expand(l:grammalecte_cli_py))
+        echomsg "Grammalecte cannot be found at: " . s:grammalecte_cli_py
+        echomsg "You need to install Grammalecte and/or set up g:grammalecte_cli_py"
+        echomsg "to indicate the location of the Grammalecte pythonpath/cli.py script."
+        return -1
+        endif
+        let s:grammalecte_cli_py = l:grammalecte_cli_py
     endif
-    let s:grammalecte_cli_py = l:grammalecte_cli_py
+    let s:grammalecte_cmd = 'python3 ' . l:grammalecte_cli_py
   endif
 
 endfunction
@@ -120,8 +127,7 @@ function grammalecte#Check(line1, line2) "{{{1
   let l:range = a:line1 . ',' . a:line2
   silent exe l:range . 'w! ++enc=utf8 ' . l:GrammalecteInputFile
 
-  let l:python = executable('python3') ? 'python3 ' : ''
-  let l:grammalecte_cmd = l:python . s:grammalecte_cli_py
+  let l:grammalecte_cmd = s:grammalecte_cmd
   \ . ' --file_to_file ' . l:GrammalecteInputFile
   \ . (empty(s:grammalecte_disable_rules) ? ' ' : (' --rule_off ' . s:grammalecte_disable_rules))
   \ . ' --json --concat_lines --only_when_errors --context 2> ' . l:tmperror
